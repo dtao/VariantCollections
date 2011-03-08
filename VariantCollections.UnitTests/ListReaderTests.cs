@@ -58,6 +58,13 @@ namespace VariantCollections.UnitTests
         }
 
         [Test]
+        public void CheckIndexOf()
+        {
+            Assert.That(m_reader.IndexOf(Element), Is.EqualTo(0));
+            Assert.That(m_reader.IndexOf(""), Is.EqualTo(-1));
+        }
+
+        [Test]
         public void Enumerate()
         {
             Assert.That(m_reader.SequenceEqual(new[] { Element }));

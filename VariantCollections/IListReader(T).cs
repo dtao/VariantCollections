@@ -6,7 +6,10 @@ namespace VariantCollections
     /// Represents a covariant reader of a collection of objects that can be
     /// individually accessed by index.
     /// </summary>
-    /// <typeparam name="T">The type of elements in the list.</typeparam>
+    /// 
+    /// <typeparam name="T">
+    /// The type of elements in the list.
+    /// </typeparam>
     public interface IListReader<out T> : IEnumerable<T>
     {
         /// <summary>
