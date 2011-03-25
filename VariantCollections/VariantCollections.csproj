@@ -40,13 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionWriter%28T%29.cs" />
+    <Compile Include="CollectionWriter.cs" />
     <Compile Include="DictionaryReader%28TKey, TValue%29.cs" />
     <Compile Include="DictionaryReader.cs" />
+    <Compile Include="DictionaryWriter%28TKey, TValue%29.cs" />
+    <Compile Include="ICollectionWriter%28T%29.cs" />
     <Compile Include="IDictionaryReader%28TKey, TValue%29.cs" />
+    <Compile Include="IDictionaryWriter%28TKey, TValue%29.cs" />
     <Compile Include="IListReader%28T%29.cs" />
+    <Compile Include="IListWriter%28T%29.cs" />
     <Compile Include="ListReader%28T%29.cs" />
     <Compile Include="ListReader.cs" />
+    <Compile Include="ListWriter%28T%29.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueWriter.cs" />
+    <Compile Include="StackWriter%28T%29.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

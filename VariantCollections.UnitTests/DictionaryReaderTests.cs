@@ -21,14 +21,14 @@ namespace VariantCollections.UnitTests
             {
                 { Key, Value }
             };
-            m_reader = m_dictionary.AsVariant();
+            m_reader = m_dictionary.GetReader();
         }
 
         [Test]
         public void ShouldThrowOnNullDictionary()
         {
             IDictionary<int, string> dictionary = null;
-            Assert.That(() => dictionary.AsVariant(), Throws.InstanceOf<ArgumentNullException>());
+            Assert.That(() => dictionary.GetReader(), Throws.InstanceOf<ArgumentNullException>());
         }
 
         [Test]

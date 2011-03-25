@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace VariantCollections.UnitTests
 {
     [TestFixture]
-    public class VariantListTests
+    public class ListReaderTests
     {
         const string Element = "Hello!";
 
@@ -21,14 +21,14 @@ namespace VariantCollections.UnitTests
             {
                 Element
             };
-            m_reader = m_list.AsVariant();
+            m_reader = m_list.GetReader();
         }
 
         [Test]
         public void ShouldThrowOnNullList()
         {
             IList<int> list = null;
-            Assert.That(() => list.AsVariant(), Throws.InstanceOf<ArgumentNullException>());
+            Assert.That(() => list.GetReader(), Throws.InstanceOf<ArgumentNullException>());
         }
 
         [Test]

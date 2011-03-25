@@ -26,7 +26,7 @@ namespace VariantCollections
         /// An <see cref="IListReader{T}"/> capable of reading elements from
         /// the input list.
         /// </returns>
-        public static IListReader<T> AsVariant<T>(this IList<T> list)
+        public static IListReader<T> GetReader<T>(this IList<T> list)
         {
             return new ListReader<T>(list);
         }

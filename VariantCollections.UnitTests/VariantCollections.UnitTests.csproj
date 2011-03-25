@@ -43,9 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionWriterTests.cs" />
     <Compile Include="DictionaryReaderTests.cs" />
+    <Compile Include="DictionaryWriterTests.cs" />
+    <Compile Include="LinkedListCollectionWriterTests.cs" />
     <Compile Include="ListReaderTests.cs" />
+    <Compile Include="ListWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueWriterTests.cs" />
+    <Compile Include="StackWriterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VariantCollections\VariantCollections.csproj">

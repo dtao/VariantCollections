@@ -30,7 +30,7 @@ namespace VariantCollections
         /// An <see cref="IDictionaryReader{TKey, TValue}"/> that contains
         /// elements from the input dictionary.
         /// </returns>
-        public static IDictionaryReader<TKey, TValue> AsVariant<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        public static IDictionaryReader<TKey, TValue> GetReader<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
         {
             return new DictionaryReader<TKey, TValue>(dictionary);
         }
