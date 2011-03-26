@@ -19,16 +19,31 @@ is very common for developers to think of `IList<T>` as *the* interface to use f
 requires a collection offering *random indexed **read** access* to its elements. In this capacity,
 none of the actually interesting members of `IList<T>` compromise its potential covariance.
 
-The same is true for many collection types, 
+The same is true for many collection interfaces, such as `IDictionary<TKey, TValue>` (which we often want
+to use only to look up elements by their keys, and *not* to modify the collection).
 
-The VariantCollections library addresses this in an extremely straightforward way: first, by
-defining an interface which offers *some* of the features of `IList<T>` *and is **covariant***:
+The VariantCollections library addresses this in an extremely straightforward way: by splitting the
+most common collection interfaces into **covariant** *readers* and **contravariant** *writers*.
+
+For example, given any implementation of `IList<T>`, if we are only interested in *reading* from the
+collection, we should be able to treat it as an `IList<U>` for any type `U` that is *less specific*
+than `T` (e.g., an `IList<string>` could just as easily be viewed as an `IList<object>` *for read-only
+purposes*). In contrast, if we are only interested in *writing* to the collection, we should be able
+to treat it as an `IList<U>` for any type `U` that is *more specific* than `T` (so, we could treat an
+`IList<object>` as an `IList<string>` *for write-only purposes*).
+
+This leads to the logical "splitting up" of `IList<T>` into the following covariant and contravariant
+interfaces:
 
 	public interface IListReader<out T> : IEnumerable<T>
 	{
 		T this[int index] { get; }
 		int Count { get; }
 	}
+
+    public interface IListWriter<in T>
+    {
+    }
 
 Next, by defining an extension method on any `IList<T>` which creates an
 `IListReader<T>` for that list:
