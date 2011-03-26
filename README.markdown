@@ -43,16 +43,22 @@ interfaces:
 
     public interface IListWriter<in T>
     {
+        T this[int index] { set; }
     }
 
-Next, by defining an extension method on any `IList<T>` which creates an
-`IListReader<T>` for that list:
+Then, by defining two extension methods on `IList<T>` which create either a reader or a writer for
+the collection, we make these interfaces reasily discoverable:
 
-	public static IListReader<T> AsVariant<T>(this IList<T> list);
+	public static IListReader<T> GetReader<T>(this IList<T> list);
+    public static IListWriter<T> GetWriter<T>(this IList<T> list);
 
 What this allows us to do is achieve exactly the kind of variance we would *like* for `IList<T>` to
-have, while avoiding the illegal parts (`Add`, `Insert`, `Remove`, etc.):
+have, whether that be covariance for read-only interaction with the list:
 
 	var list = new List<int> { 1, 2, 3 };
-	IListReader<int> reader = list.AsVariant();
-	IListReader<object> objectReader = reader; // This is legal!
+	IListReader<object> reader = list.GetReader(); // This is legal!
+
+...or contravariance for write-only interaction:
+
+    var list = new List<object> { "Hello", 5, DateTime.Now };
+    IListWriter<string> writer = list.GetWriter(); // This is also legal!
