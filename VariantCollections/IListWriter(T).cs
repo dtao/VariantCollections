@@ -1,5 +1,13 @@
-﻿namespace VariantCollections
+namespace VariantCollections
 {
+    /// <summary>
+    /// Represents a contravariant writer of a collection of objects that can be
+    /// individually set by index.
+    /// </summary>
+    /// 
+    /// <typeparam name="T">
+    /// The type of elements in the list.
+    /// </typeparam>
     public interface IListWriter<in T> : ICollectionWriter<T>
     {
         /// <summary>
